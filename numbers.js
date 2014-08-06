@@ -22,19 +22,18 @@ var median = function(numbers) {
 	}
 }
 var mode = function(numbers) {
-	// H/T http://stackoverflow.com/questions/2440295/extracting-the-most-duplicate-value-from-an-array-in-javascript-with-jquery#answer-2440343
-	var numAppearances = {}; // Use an object as an associative array
-	var prevMax = 0;
+	var numAppearances = [];
 	var winners = [];
+	var prevMax = 0;
 	for (var i = 0; i < numbers.length; i++) {
-		// Increment count if it's available; otherwise, start a new one
+		// Increment the count if it's available; otherwise, start a new one
 		numAppearances[numbers[i]] = (numAppearances[numbers[i]] || 0) + 1;
 		if (numAppearances[numbers[i]] > prevMax) {
 			prevMax = numAppearances[numbers[i]];
-			winners = []; // Empty previous winner(s)
+			winners = []; // Clear previous winner(s)
 			winners.push(numbers[i]);
 		} else if (numAppearances[numbers[i]] == prevMax) {
-			winners.push(numbers[i]); // DON'T empty previous winner(s)
+			winners.push(numbers[i]); // DON'T clear previous winner(s)
 		}
 	}
 	if (winners.length > 1) {
