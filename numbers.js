@@ -1,4 +1,3 @@
-// Since median sometimes requires mean, let's put all three in functions
 var mean = function(numbers) {
 	var meanSum = 0;
 	for (var i = 0; i < numbers.length; i++) {
@@ -6,6 +5,7 @@ var mean = function(numbers) {
 	}
 	return (meanSum / numbers.length);
 }
+
 var median = function(numbers) {
 	var numbers = numbers.slice().sort(function(a, b) { 
 		return a - b;  // .slice() lets us sort a copy, not the original: cleaner
@@ -21,10 +21,9 @@ var median = function(numbers) {
 		return mean([numbers[lowerMiddle], numbers[higherMiddle]]);
 	}
 }
+
 var mode = function(numbers) {
-	var numAppearances = [];
-	var winners = [];
-	var prevMax = 0;
+	var numAppearances = [], winners = [], prevMax = 0;
 	for (var i = 0; i < numbers.length; i++) {
 		// Increment the count if it's available; otherwise, start a new one
 		numAppearances[numbers[i]] = (numAppearances[numbers[i]] || 0) + 1;
@@ -36,22 +35,24 @@ var mode = function(numbers) {
 			winners.push(numbers[i]); // DON'T clear previous winner(s)
 		}
 	}
-	if (winners.length > 1) {
-		return "It's a tie between " + winners.join(' and ');
-	} else {
-		return winners[0];
+	return winners.length > 1 ? "It's a tie between " + winners.join(' and ') : winners[0];
+}
+
+// Start of execution
+
+// Sanitize input
+for (var i = 0; i < process.argv.length; i++) {
+	if (isNaN(process.argv[i])) { // (Removes "node" and "~/**/numbers.js", too)
+		process.argv.splice(i, 1);
+		i--; // So that the array doesn't "shift" and hide one argument
 	}
 }
-if (process.argv.length <= 2) {
+if (process.argv.length < 1) {
 	console.log('Uh oh, you didn\'t give me any numbers!');
-} else {
-	process.argv.splice(0,2); // Trim argv[] to just the "real" arguments
-	for (var i = 0; i < process.argv.length; i++) {
-		if (isNaN(process.argv[i])) {
-			process.argv.splice(i, 1); // Remove non-numbers, just to be safe
-		}
-	}
-	console.log('mean: ' + mean(process.argv));
-	console.log('median: ' + median(process.argv));
-	console.log('mode: ' + mode(process.argv));
+	return false
 }
+
+// Let's do some math!
+console.log('mean: ' + mean(process.argv));
+console.log('median: ' + median(process.argv));
+console.log('mode: ' + mode(process.argv));
