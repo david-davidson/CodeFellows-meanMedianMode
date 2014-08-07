@@ -1,11 +1,13 @@
 {
-  "name": "meanMedianMode",
-  "version": "0.0.0",
-  "description": "A quick arithmetic calculator in JS and Node",
-  "main": "numbers.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC"
+    "name" : "gruntConfig",
+    "version" : "0.1.0",
+    "author" : "David Davidson",
+    "private" : true,
+
+    "devDependencies" : {
+        "grunt": "*",
+        "grunt-contrib-jshint": "*",
+        "grunt-contrib-watch": "*",
+        "matchdep": "*"
+    }
 }
