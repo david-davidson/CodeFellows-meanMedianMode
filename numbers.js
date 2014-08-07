@@ -1,26 +1,26 @@
 var mean = function(numbers) {
 	var meanSum = 0;
 	for (var i = 0; i < numbers.length; i++) {
-		meanSum += new Number(numbers[i]);
+		meanSum += Number(numbers[i]);
 	}
 	return (meanSum / numbers.length);
-}
+};
 
 var median = function(numbers) {
-	var numbers = numbers.slice().sort(function(a, b) { 
+	var sortedNumbers = numbers.slice().sort(function(a, b) { 
 		return a - b;  // .slice() lets us sort a copy, not the original: cleaner
 	});
-	if (numbers.length % 2 != 0) {
+	if (sortedNumbers.length % 2 !== 0) {
 		// Odd number of arguments? Return the middle number...
-		var middle = (numbers.length - 1) / 2;
-		return numbers[middle]; 
+		var middle = (sortedNumbers.length - 1) / 2;
+		return sortedNumbers[middle]; 
 	} else {
 		// ...Even? Return the mean of the middle two
-		var lowerMiddle = Math.floor((numbers.length - 1) / 2);
-		var higherMiddle = Math.ceil((numbers.length - 1) / 2);
-		return mean([numbers[lowerMiddle], numbers[higherMiddle]]);
+		var lowerMiddle = Math.floor((sortedNumbers.length - 1) / 2);
+		var higherMiddle = Math.ceil((sortedNumbers.length - 1) / 2);
+		return mean([sortedNumbers[lowerMiddle], sortedNumbers[higherMiddle]]);
 	}
-}
+};
 
 var mode = function(numbers) {
 	var numAppearances = [], winners = [], prevMax = 0;
@@ -36,7 +36,7 @@ var mode = function(numbers) {
 		}
 	}
 	return winners.length > 1 ? "It's a tie between " + winners.join(' and ') : winners[0];
-}
+};
 
 // Start of execution
 
@@ -49,7 +49,7 @@ for (var i = 0; i < process.argv.length; i++) {
 }
 if (process.argv.length < 1) {
 	console.log('Uh oh, you didn\'t give me any numbers!');
-	return false
+	return false;
 }
 
 // Let's do some math!
