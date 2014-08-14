@@ -3,25 +3,14 @@ module.exports = function(grunt){
     require("matchdep").filterDev("grunt-*").forEach(grunt.loadNpmTasks);
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        watch: {
-            all: {
-                files: [
-                    'numbers.js' 
-                ],
-                tasks: [
-                    'jshint'
-                ],
-                options: {
-                    livereload: true
-                }
-            }
-        },
         jshint: {
-            files: ['numbers.js']
+            files: [
+                'meanMedianMode.js',
+                'tests/**/*.js'
+            ]
         },
     });
 grunt.registerTask('default', [
-    'jshint',
-    'watch'
+    'jshint'
     ]);
 };
