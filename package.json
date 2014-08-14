@@ -1,13 +1,13 @@
 {
-    "name" : "gruntConfig",
-    "version" : "0.1.0",
-    "author" : "David Davidson",
-    "private" : true,
-
-    "devDependencies" : {
-        "grunt": "*",
-        "grunt-contrib-jshint": "*",
-        "grunt-contrib-watch": "*",
-        "matchdep": "*"
-    }
+  "name": "gruntConfig",
+  "version": "0.1.0",
+  "author": "David Davidson",
+  "private": true,
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "grunt": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-contrib-watch": "*",
+    "matchdep": "*"
+  }
 }
